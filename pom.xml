@@ -1,0 +1,695 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.lote</groupId>
+	<artifactId>wms-parent</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<distributionManagement>
+		<!-- release版本 -->
+		<!-- id 需跟maven settings.xml 文件 server 节点id 一致 -->
+
+		<!-- <repository> <id>nexus-releases</id> <name>User Project Release</name> 
+			<url>http://192.168.80.51:9001/nexus/content/repositories/releases/</url> 
+			</repository> -->
+
+		<!-- snapshot版本 -->
+		<!-- snapshotRepository，表示开发过程中的发布库 -->
+
+		<!-- <snapshotRepository> <id>nexus-snapshots</id> <name>User Project SNAPSHOTS</name> 
+			<url>http://192.168.80.51:9001/nexus/content/repositories/snapshots/</url> 
+			</snapshotRepository> -->
+	</distributionManagement>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.version>1.8</java.version>
+
+		<!--子工程版本声明 start -->
+		<wms-base.version>0.0.1-SNAPSHOT</wms-base.version>
+		<!--子工程版本声明 end -->
+
+		<slf4j.version>1.7.6</slf4j.version>
+		<logback.version>1.1.7</logback.version>
+		<log4j.version>1.2.17</log4j.version>
+
+		<jackson.version>2.6.7</jackson.version>
+
+		<commons-logging.version>1.2</commons-logging.version>
+		<commons-lang3.version>3.1</commons-lang3.version>
+		<commons-lang.version>2.6</commons-lang.version>
+		<commons-collections.version>3.2.2</commons-collections.version>
+		<commons-io.version>2.4</commons-io.version>
+		<commons-fileupload.version>1.3</commons-fileupload.version>
+		<commons-beanutils.version>1.8.3</commons-beanutils.version>
+		<commons-codec.version>1.10</commons-codec.version>
+		<cglib.version>3.1</cglib.version>
+		<httpclient.version>4.5.2</httpclient.version>
+
+		<mysql.version>5.1.21</mysql.version>
+		<bonecp.version>0.8.0.RELEASE</bonecp.version>
+
+		<druid.version>1.0.28</druid.version>
+		<mybatis.version>3.2.6</mybatis.version>
+		<mybatis-ehcache.version>1.0.2</mybatis-ehcache.version>
+		<mybatis-spring.version>1.2.0</mybatis-spring.version>
+
+		<jedis.version>2.7.2</jedis.version>
+
+		<spring.version>4.2.7.RELEASE</spring.version>
+		<javax.websocket.version>1.0</javax.websocket.version>
+
+		<shiro.version>1.2.2</shiro.version>
+
+		<junit.version>4.11</junit.version>
+		<jmockit.version>1.9</jmockit.version>
+
+		<servlet.version>3.1.0</servlet.version>
+		<jstl.version>1.2</jstl.version>
+
+		<hibernate-validator.version>5.1.3.Final</hibernate-validator.version>
+
+		<mybatis-plugin-page.version>1.0.4</mybatis-plugin-page.version>
+		<org.apache.poi.version>3.16</org.apache.poi.version>
+		<dubbo.version>2.8.4</dubbo.version>
+		<javassist.version>3.3.GA</javassist.version>
+		<netty.version>3.2.10.Final</netty.version>
+		<io.netty.version>3.10.6.Final</io.netty.version>
+		<zkclient.version>0.4</zkclient.version>
+		<zookeeper.version>3.4.10</zookeeper.version>
+		<swagger.version>0.9.5</swagger.version>
+		<jackson-asl.version>1.9.13</jackson-asl.version>
+		<fastjson.version>1.2.21</fastjson.version>
+		<jxls.version>2.4.0</jxls.version>
+		<jxls-poi.version>1.0.12</jxls-poi.version>
+		<jxls-jexcel.version>1.0.6</jxls-jexcel.version>
+		<jxls-reader.version>2.0.2</jxls-reader.version>
+		<org.csource.version>1.27</org.csource.version>
+		<com.rabbitmq.version>4.0.1</com.rabbitmq.version>
+		<spring-rabbit.version>1.7.3.RELEASE</spring-rabbit.version>
+		<org.quartz-scheduler.version>2.2.1</org.quartz-scheduler.version>
+	</properties>
+
+	<!-- 声明依赖,统一版本 -->
+	<dependencyManagement>
+		<dependencies>
+			<!-- common层 start -->
+			<dependency>
+				<groupId>com.lote</groupId>
+				<artifactId>wms-base</artifactId>
+				<version>${wms-base.version}</version>
+			</dependency>
+			<!-- common层end -->
+
+
+			<!-- 单元测试 start -->
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>${junit.version}</version>
+				<scope>test</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-test</artifactId>
+				<version>${spring.version}</version>
+				<scope>test</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.jmockit</groupId>
+				<artifactId>jmockit</artifactId>
+				<version>${jmockit.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<!-- 单元测试 end -->
+
+			<!-- log start -->
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>${slf4j.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>jcl-over-slf4j</artifactId>
+				<version>${slf4j.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>jul-to-slf4j</artifactId>
+				<version>${slf4j.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>ch.qos.logback</groupId>
+				<artifactId>logback-classic</artifactId>
+				<version>${logback.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>log4j</groupId>
+				<artifactId>log4j</artifactId>
+				<version>${log4j.version}</version>
+			</dependency>
+			<!-- log end -->
+
+			<!-- jackson start -->
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-core</artifactId>
+				<version>${jackson.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-databind</artifactId>
+				<version>${jackson.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.fasterxml.jackson.dataformat</groupId>
+				<artifactId>jackson-dataformat-xml</artifactId>
+				<version>${jackson.version}</version>
+			</dependency>
+			<!-- jackson end -->
+
+			<!-- apache commons start -->
+			<dependency>
+				<groupId>commons-logging</groupId>
+				<artifactId>commons-logging</artifactId>
+				<version>${commons-logging.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-lang3</artifactId>
+				<version>${commons-lang3.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>commons-lang</groupId>
+				<artifactId>commons-lang</artifactId>
+				<version>${commons-lang.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>commons-collections</groupId>
+				<artifactId>commons-collections</artifactId>
+				<version>${commons-collections.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>commons-io</groupId>
+				<artifactId>commons-io</artifactId>
+				<version>${commons-io.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>commons-fileupload</groupId>
+				<artifactId>commons-fileupload</artifactId>
+				<version>${commons-fileupload.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>commons-beanutils</groupId>
+				<artifactId>commons-beanutils</artifactId>
+				<version>${commons-beanutils.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>commons-codec</groupId>
+				<artifactId>commons-codec</artifactId>
+				<version>${commons-codec.version}</version>
+			</dependency>
+			<!-- apache commons end -->
+
+			<!-- jedis相关 start -->
+			<dependency>
+				<groupId>redis.clients</groupId>
+				<artifactId>jedis</artifactId>
+				<version>${jedis.version}</version>
+			</dependency>
+			<!-- jedis相关 end -->
+
+			<!-- cglib相关 start -->
+			<dependency>
+				<groupId>cglib</groupId>
+				<artifactId>cglib</artifactId>
+				<version>${cglib.version}</version>
+			</dependency>
+			<!-- cglib相关 end -->
+
+			<!-- spring start -->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-core</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-beans</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context-support</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-web</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-webmvc</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-jdbc</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-aop</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-aspects</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-tx</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-oxm</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-expression</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-jms</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<!-- spring end -->
+
+			<!-- springmvc websocket start -->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-websocket</artifactId>
+				<version>${spring.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>com.fasterxml.jackson.core</groupId>
+						<artifactId>jackson-databind</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-messaging</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>javax.websocket</groupId>
+				<artifactId>javax.websocket-api</artifactId>
+				<version>${javax.websocket.version}</version>
+			</dependency>
+			<!-- springmvc websocket end -->
+
+			<!-- shiro start -->
+			<dependency>
+				<groupId>org.apache.shiro</groupId>
+				<artifactId>shiro-core</artifactId>
+				<version>${shiro.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.shiro</groupId>
+				<artifactId>shiro-web</artifactId>
+				<version>${shiro.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.shiro</groupId>
+				<artifactId>shiro-spring</artifactId>
+				<version>${shiro.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.shiro</groupId>
+				<artifactId>shiro-ehcache</artifactId>
+				<version>${shiro.version}</version>
+			</dependency>
+			<!-- shiro end -->
+
+			<!-- servlet start -->
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>javax.servlet-api</artifactId>
+				<version>${servlet.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>jstl</artifactId>
+				<version>${jstl.version}</version>
+			</dependency>
+			<!-- servlet end -->
+
+			<dependency>
+				<groupId>org.apache.httpcomponents</groupId>
+				<artifactId>httpclient</artifactId>
+				<version>${httpclient.version}</version>
+			</dependency>
+
+			<!--datasource connection pool [druid] -->
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>druid</artifactId>
+				<version>${druid.version}</version>
+			</dependency>
+
+			<!-- mybatis start -->
+			<dependency>
+				<groupId>org.mybatis</groupId>
+				<artifactId>mybatis</artifactId>
+				<version>${mybatis.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.mybatis</groupId>
+				<artifactId>mybatis-spring</artifactId>
+				<version>${mybatis-spring.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.mybatis.caches</groupId>
+				<artifactId>mybatis-ehcache</artifactId>
+				<version>${mybatis-ehcache.version}</version>
+			</dependency>
+			<!-- mybatis end -->
+
+			<!-- 分页插件 -->
+			<dependency>
+				<groupId>mybatis.plugin.page</groupId>
+				<artifactId>mybatis-plugin-page</artifactId>
+				<version>${mybatis-plugin-page.version}</version>
+			</dependency>
+
+			<!-- mysql驱动 -->
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>${mysql.version}</version>
+			</dependency>
+
+			<!-- 开源的分析、编辑和创建Java字节码的类库 -->
+			<dependency>
+				<groupId>javassist</groupId>
+				<artifactId>javassist</artifactId>
+				<version>${javassist.version}</version>
+			</dependency>
+
+			<!-- mq dependency start -->
+			<dependency>
+				<groupId>com.rabbitmq</groupId>
+				<artifactId>amqp-client</artifactId>
+				<version>${com.rabbitmq.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework.amqp</groupId>
+				<artifactId>spring-rabbit</artifactId>
+				<version>${spring-rabbit.version}</version>
+			</dependency>
+			<!-- mq dependency end -->
+
+			<!-- swagger dependency start -->
+			<dependency>
+				<groupId>com.mangofactory</groupId>
+				<artifactId>swagger-springmvc</artifactId>
+				<version>${swagger.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.codehaus.jackson</groupId>
+				<artifactId>jackson-mapper-asl</artifactId>
+				<version>${jackson-asl.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.codehaus.jackson</groupId>
+				<artifactId>jackson-core-asl</artifactId>
+				<version>${jackson-asl.version}</version>
+			</dependency>
+			<!-- swagger dependency end -->
+
+			<!-- fastjson by ali -->
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>fastjson</artifactId>
+				<version>${fastjson.version}</version>
+			</dependency>
+
+			<!-- poi start -->
+			<dependency>
+				<groupId>org.apache.poi</groupId>
+				<artifactId>poi</artifactId>
+				<version>${org.apache.poi.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.poi</groupId>
+				<artifactId>poi-ooxml</artifactId>
+				<version>${org.apache.poi.version}</version>
+			</dependency>
+			<!-- poi end -->
+
+			<!-- jxls strat -->
+			<dependency>
+				<groupId>org.jxls</groupId>
+				<artifactId>jxls</artifactId>
+				<version>${jxls.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.jxls</groupId>
+				<artifactId>jxls-poi</artifactId>
+				<version>${jxls-poi.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.jxls</groupId>
+				<artifactId>jxls-jexcel</artifactId>
+				<version>${jxls-jexcel.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.jxls</groupId>
+				<artifactId>jxls-reader</artifactId>
+				<version>${jxls-reader.version}</version>
+			</dependency>
+			<!-- jxls end -->
+
+			<!-- 定时任务框架quartz begin -->
+			<dependency>
+				<groupId>org.quartz-scheduler</groupId>
+				<artifactId>quartz</artifactId>
+				<version>${org.quartz-scheduler.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.quartz-scheduler</groupId>
+				<artifactId>quartz-jobs</artifactId>
+				<version>${org.quartz-scheduler.version}</version>
+			</dependency>
+			<!-- 定时任务框架quartz end -->
+		</dependencies>
+	</dependencyManagement>
+
+
+	<build>
+		<!-- 指定 src/main/resources下xml,properties文件及文件夹为资源文件 -->
+		<resources>
+			<resource>
+				<!-- 复制至目标目录 -->
+				<targetPath>${project.build.directory}/classes</targetPath>
+				<!-- 原目录 -->
+				<directory>src/main/resources</directory>
+				<includes>
+					<include>*.xml</include>
+					<include>*.properties</include>
+
+					<include>**/*.xml</include>
+					<include>**/*.properties</include>
+				</includes>
+				<!-- ${key}会被替换掉为真正的值 -->
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+
+		<pluginManagement>
+			<plugins>
+				<!-- eclipse m2e 解决Maven插件生命周期内引起的冲突 -->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.apache.maven.plugins</groupId>
+										<artifactId>maven-dependency-plugin</artifactId>
+										<versionRange>[2.0,)</versionRange>
+										<goals>
+											<goal>copy-dependencies</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore />
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+
+				<!--编译插件 指定在jdk1.8环境下编译 -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>2.3.2</version>
+					<configuration>
+						<source>1.8</source>
+						<target>1.8</target>
+					</configuration>
+					<dependencies>
+						<dependency>
+							<groupId>org.codehaus.plexus</groupId>
+							<artifactId>plexus-compiler-javac</artifactId>
+							<version>1.8.1</version>
+						</dependency>
+					</dependencies>
+				</plugin>
+
+				<!-- 复制依赖包 -->
+				<plugin>
+					<artifactId>maven-dependency-plugin</artifactId>
+					<version>2.6</version>
+					<executions>
+						<execution>
+							<id>copy-dependencies</id>
+							<phase>prepare-package</phase>
+							<goals>
+								<goal>copy-dependencies</goal>
+							</goals>
+						</execution>
+					</executions>
+					<configuration>
+						<includeTypes>jar</includeTypes>
+						<overWriteSnapshots>true</overWriteSnapshots>
+						<type>jar</type>
+						<outputDirectory>${project.build.directory}/lib</outputDirectory>
+					</configuration>
+				</plugin>
+
+				<!-- 发布插件 -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-deploy-plugin</artifactId>
+					<version>2.4</version>
+					<configuration>
+						<skip>true</skip>
+					</configuration>
+				</plugin>
+
+				<!-- 源码插件 -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>2.6</version>
+					<configuration>
+						<!-- 解决资源文件的编码问题 -->
+						<encoding>UTF-8</encoding>
+					</configuration>
+				</plugin>
+
+				<!-- 打包source文件为jar文件 -->
+				<plugin>
+					<artifactId>maven-source-plugin</artifactId>
+					<version>2.6</version>
+					<configuration>
+						<attach>true</attach>
+						<encoding>UTF-8</encoding>
+					</configuration>
+					<executions>
+						<execution>
+							<phase>compile</phase>
+							<goals>
+								<goal>jar</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+
+				<!--单元测试插件 用来在maven构建生命周期的test phase执行一个应用的单元测试 -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>2.10</version>
+					<configuration>
+						<argLine>-Xmx1024m -XX:PermSize=256m -XX:MaxPermSize=256m</argLine>
+						<additionalClasspathElements>
+							<additionalClasspathElement>
+								${basedir}/target/test-classes
+							</additionalClasspathElement>
+						</additionalClasspathElements>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+	<modules>
+		<module>wms-base</module>
+		<module>wms-task</module>
+		<module>wms-api</module>
+		<module>wms-main</module>
+		<module>wms-send</module>
+	</modules>
+</project>
